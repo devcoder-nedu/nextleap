@@ -68,3 +68,40 @@ image,
 bio
 }
 `);
+
+export const AUTHOR_BY_ID_QUERY = defineQuery(`
+*[_type=="author" && _id == $id][0] {
+_id,
+id,
+name,
+username,
+email,
+image,
+bio
+}
+`);
+
+export const STARTUPS_BY_AUTHOR_QUERY = defineQuery(`
+*[
+  _type == "startup" &&
+  author._ref==$id
+] | order(_createdAt desc) {
+  _type,
+  _updatedAt,
+  _rev,
+  _id,
+  title,
+  category,
+  description,
+  slug,
+  _createdAt,
+  views,
+  image,
+  author->{
+    _id,
+    name,
+    image,
+    bio
+  }
+}
+`);
