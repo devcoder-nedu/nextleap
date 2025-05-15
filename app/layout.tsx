@@ -4,6 +4,7 @@ import localFont from "next/font/local";
 
 import 'easymde/dist/easymde.min.css';
 import {Toaster} from "@/components/ui/sonner";
+import {SanityLive} from '@/sanity/lib/live'
 
 const workSans = localFont({
         src: [
@@ -74,6 +75,8 @@ export default function RootLayout({
         {children}
         <Toaster/>
         </body>
+        <SanityLive/>
         </html>
+
     );
 }
